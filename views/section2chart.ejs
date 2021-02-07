@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>chart</title>
+        
+        <style>
+            body {
+                padding: 30px;
+                margin : 30px;
+                padding-top: 0;
+                margin-top: 0;
+                background-color: #cdcdcd;
+                
+            }
+        </style>
+        <style>
+            /* 기본 설정*/
+            a{text-decoration:none; color:#000000;}         
+            a:hover{color:#ff0000;}                    
+            
+            /* nav tag */
+            nav ul{padding-top:10px; text-align: center;}                     /*  상단 여백 10px  */
+            nav ul li {
+               display:inline;                         /*  세로나열을 가로나열로 변경 */
+               border-left:1px solid #999;             /* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
+               font:bold 12px Dotum;                     /* 폰트 설정 - 12px의 돋움체 굵은 글씨로 표시 */
+               padding:0 10px;                         /* 각 메뉴 간격 */
+           }
+            nav ul li:first-child{border-left:none;}  
+          
+        </style>
+        
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+    $.getJSON('http://34.64.175.201:3000/temp2'
+            ,function(data){
+                var $dd1 = data.rowg.length-1
+
+                 var qq1 = [];
+                 var ww1 = [];
+                 var ee1 = [];
+                 var rr1 = [];
+                 for(var i =0; i<$dd1+1; i=i+6){
+                     qq1.push([
+                         Number(data.rowg[i].temp)
+                     ])
+                 }
+                 for(var i =0; i<$dd1+1; i=i+6){
+                     ww1.push([
+                         Number(data.rowg[i].hum)
+                     ])
+                 }
+                 for(var i =0; i<$dd1+1; i=i+6){
+                     ee1.push([
+                         Number(data.rowg[i].soiltemp)
+                     ])
+                 }
+                 for(var i =0; i<$dd1+1; i=i+6){
+                     rr1.push([
+                         Number(data.rowg[i].soilhum)
+                     ])
+                 }
+                 $(function () {
+          
+          $('#chart2').highcharts({
+              title: {
+                   text: 'Section2',
+                   x: -20 //center
+              },
+              subtitle:{
+                  text: '2020-11-30',
+                  x:-20
+
+              },
+          
+              xAxis: {  //x축
+                categories: ['00:00','01:00', '02:00','03:00', '04:00','05:00', '06:00','07:00', '08:00','09:00', '10:00','11:00', '12:00',
+                    '13:00', '14:00','15:00', '16:00','17:00', '18:00','19:00', '20:00','21:00', '22:00','23:00']
+                    },
+              yAxis: {  //y축
+               title: {
+                   text: '단위 (°C)'
+               },
+               plotLines: [{   //선
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+               }]
+               },
+               
+               legend: {  
+                   layout: 'vertical',
+                   align: 'right',
+                   verticalAlign: 'middle',
+                   borderWidth: 0
+               },
+               series: [{   
+                   name: 'temp',
+                   data: qq1
+               }, {
+                   name: 'hum',
+                   data: ww1
+               },{
+                   name: 'soiltemp',
+                   data: ee1
+               }, {
+                   name: 'sun',
+                   data: rr1
+               }]
+       });
+       });
+                                           });
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+
+        <script src="../code/highcharts.js"></script>
+        <script src="../code/modules/exporting.js"></script> 
+
+    
+
+
+
+
+<script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<script>
+    $(function(){
+        $("#tablesort").dataTable();
+    });
+</script>
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li><a href="/charts">Home</a></li>
+            <li><a href="/section1chart">Section1</a></li>
+            <li><a href="#">Section2</a></li>
+            <li><a href="#">Section3</a></li>
+            <li><a href="#">Section4</a></li>
+        </ul>   
+    </nav> 
+
+    <br>
+    
+    <div id="chart2" style="width: 100%; height: 100%; float: left;border-radius: 15px; margin-bottom: 20px;"></div>
+   <div style="width: 100%; height: 400;">
+    <table id="tablesort">
+                                 <thead>
+                                          <tr>
+                                            <th>temp</th>
+                                            <th>hum</th>
+                                            <th>sun</th>
+                                            <th>date</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%
+                                            for(var i=0; i<results.length; i++)
+                                            {
+                                                var data = results[i];
+                                            %>
+                                            <tr>
+                                                <td style="text-align: center;"><%=data.temp%></td>
+                                                <td style="text-align: center;"><%=data.hum%></td>
+                                                <td style="text-align: center;"><%=data.soilhum%></td>
+                                                <td style="text-align: center;"><%=data.date2%></td>
+                                            </tr>
+                                            <%}
+                                            %>
+                                
+                                        </tbody>
+
+                                      </table>   
+</div>
+  </body>
+ 
+
+</html>

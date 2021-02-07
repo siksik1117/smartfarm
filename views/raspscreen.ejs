@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html style="background-color: #000000;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>screen</title>
+        
+        <style>
+            
+        </style>
+        <style>
+.project-tab {
+    padding: 10%;
+    margin-top: -8%;
+}
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.project-tab #tabs h6.section-title{
+    color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.project-tab .nav-link:hover {
+    border: none;
+}
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+        </style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script>
+    $.getJSON('http://34.64.175.201:3000/control'
+            ,function(data){
+        var $ws = data.rows[0].ws;        
+        var $sun = data.rows[0].sun;
+        var $rain = data.rows[0].rain;
+        var $wm = data.rows[0].wm;
+        var $led = data.rows[0].led;
+        var $fan = data.rows[0].fan;
+        
+        if($ws == "1")
+            $ws = "작동중";
+        else if($ws == "0")
+            $ws = "정지중";
+
+        if($sun == "1")
+            $sun = "작동중";
+        else if($sun == "0")
+            $sun = "정지중";
+
+        if($rain == "1")
+            $rain = "작동중";
+        else if($rain == "0")
+            $rain = "정지중";	
+
+        if($wm == "1")
+            $wm = "작동중";
+        else if($wm == "0")
+            $wm = "정지중";	
+
+        if($led == "1")
+            $led = "작동중";
+        else if($led == "0")
+            $led = "정지중";
+
+        if($fan == "1")
+            $fan = "작동중";
+        else if($fan == "0")
+            $fan = "정지중";		
+
+        $('.ws').append($ws);
+        $('.sun').append($sun);
+        $('.rain').append($rain);
+        $('.wm').append($wm);
+        $('.led').append($led);
+        $('.fan').append($fan);	
+        
+    });
+</script>
+ <script>
+    $.getJSON('http://34.64.175.201:3000/button'
+            ,function(data){ 
+    var $auto = data.rowf[0].auto;
+
+    if($auto == "1")
+        $auto = "자동모드";
+    else if($auto == "0")
+        $auto = "수동모드"; 
+    
+    $('.auto').append($auto);
+})
+
+</script>
+
+      
+  </head>
+  <body>
+
+    
+    <section id="tabs" class="project-tab" style="background-color: #000000;">
+        <div class="container">
+            <div class="row">
+                <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;width:100%;height:75px; margin-top: 25px;"src="https://www.clocklink.com/html5embed.php?clock=036&timezone=JST&color=black&size=570&Title=&Message=&Target=&From=2020,1,1,0,0,0&Color=black"></iframe>
+<br>
+<br>
+<br>
+<br>
+<br>
+                <div class="col-md-12">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">제어부</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">개폐기</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">자동모드 & 수동모드</a>
+                        </div>
+                    </nav>
+                
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <table class="table" cellspacing="0" style="height: 200px;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">종류</th>
+                                        <th class="text-center">작동상태</th>
+                                        <th class="text-center">ON</th>
+                                        <th class="text-center">OFF</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td style="color: #ffffff;">관수모터</td>
+                                        <td style="color: #ffffff;"><div class="wm"></div></td>
+                                        <td onclick="location.href='/wm2'"  style="cursor: pointer;color:blue;">ON</td>
+                                        <td onclick="location.href='/wm3'"  style="cursor: pointer;color:red;;">OFF</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td style="color: #ffffff;">LED</td>
+                                        <td style="color: #ffffff;"><div class="led"></div></td>
+                                        <td onclick="location.href='/led2'"  style="cursor: pointer;color:blue;">ON</td>
+                                        <td onclick="location.href='/led3'"  style="cursor: pointer;color:red;">OFF</td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td style="color: #ffffff;">환풍기</td>
+                                        <td style="color: #ffffff;"><div class="fan"></div></td>
+                                        <td onclick="location.href='/fan2'"  style="cursor: pointer;color:blue;">ON</td>
+                                        <td onclick="location.href='/fan3'"  style="cursor: pointer;color:red;">OFF</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <table class="table" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">올리기</th>
+                                        <th class="text-center">정지</th>
+                                        <th class="text-center">내리기</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center" onclick="location.href='/up1'"  style="cursor: pointer;color: #ffffff;">UP</td>
+										<td class="text-center" onclick="location.href='/stop1'"  style="cursor: pointer;color: #ffffff;">STOP</td>
+										<td class="text-center" onclick="location.href='/down1'"  style="cursor: pointer;color: #ffffff;">DOWN</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <table class="table" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">작동상태</th>
+                                        <th class="text-center">자동모드</th>
+                                        <th class="text-center">수동모드</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center" style="color: #ffffff;"><div class="auto"></div></td>
+                                        <td class="text-center" onclick="location.href='/auto4'"  style="cursor: pointer;color: #ffffff;">Auto</td>
+                                        <td class="text-center" onclick="location.href='/auto4'"  style="cursor: pointer;color: #ffffff;">Manual</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  </body>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+</html>

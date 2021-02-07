@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>chart</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>
+            $.getJSON('http://34.64.175.201:3000/temp1'
+                 ,function(data){
+                     var $dd = data.rowz.length-1
+                     var $date = data.rowz[$dd].date1
+                     
+                     var qq = [];
+                     var ww = [];
+                     var ee = [];
+                     var rr = [];
+                     
+                     for(var i =0; i<$dd+1; i++){
+                         qq.push([
+                             Number(data.rowz[i].temp)
+                         ])
+                     }
+                     for(var i =0; i<$dd+1; i++){
+                         ww.push([
+                             Number(data.rowz[i].hum)
+                         ])
+                     }
+                     for(var i =0; i<$dd+1; i++){
+                         ee.push([
+                             Number(data.rowz[i].soiltemp)
+                         ])
+                     }
+                     for(var i =0; i<$dd+1; i++){
+                         rr.push([
+                             Number(data.rowz[i].soilhum)
+                         ])
+                     }
+
+            $(function () {
+              
+               $('#chart1').highcharts({
+                   title: {
+                        text: 'Section1',
+                        x: -20 //center
+                   },
+                   subtitle:{
+                       text: $date,
+                       x:-20
+
+                   },
+               
+                   xAxis: {  //x축
+                    categories: ['00:00','01:00', '02:00','03:00', '04:00','05:00', '06:00','07:00', '08:00','09:00', '10:00','11:00', '12:00',
+                    '13:00', '14:00','15:00', '16:00','17:00', '18:00','19:00', '20:00','21:00', '22:00','23:00']
+                    },
+                   yAxis: {  //y축
+                    title: {
+                        text: '단위 (°C)'
+                    },
+                    plotLines: [{   //선
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                    },
+                    
+                    legend: {  
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    series: [{   
+                        name: 'temp',
+                        data: qq
+                    }, {
+                        name: 'hum',
+                        data: ww
+                    },{
+                        name: 'soiltemp',
+                        data: ee
+                    }, {
+                        name: 'soilhum',
+                        data: rr
+                    }]
+            });
+            });
+                                                });
+        </script>
+
+<script>
+    $.getJSON('http://34.64.175.201:3000/temp1'
+            ,function(data){
+                var $dd1 = data.rowz.length-1
+                var $date1 = data.rowz[$dd1].date1
+
+                 var qq1 = [];
+                 var ww1 = [];
+                 var ee1 = [];
+                 var rr1 = [];
+                 for(var i =0; i<$dd1+1; i++){
+                     qq1.push([
+                         Number(data.rowz[i].temp)
+                     ])
+                 }
+                 for(var i =0; i<$dd1+1; i++){
+                     ww1.push([
+                         Number(data.rowz[i].hum)
+                     ])
+                 }
+                 for(var i =0; i<$dd1+1; i++){
+                     ee1.push([
+                         Number(data.rowz[i].soiltemp)
+                     ])
+                 }
+                 for(var i =0; i<$dd1+1; i++){
+                     rr1.push([
+                         Number(data.rowz[i].soilhum)
+                     ])
+                 }
+                 $(function () {
+          
+          $('#chart2').highcharts({
+              title: {
+                   text: 'Section2',
+                   x: -20 //center
+              },
+              subtitle:{
+                  text: $date1,
+                  x:-20
+
+              },
+          
+              xAxis: {  //x축
+                categories: ['00:00','01:00', '02:00','03:00', '04:00','05:00', '06:00','07:00', '08:00','09:00', '10:00','11:00', '12:00',
+                    '13:00', '14:00','15:00', '16:00','17:00', '18:00','19:00', '20:00','21:00', '22:00','23:00']
+                    },
+              yAxis: {  //y축
+               title: {
+                   text: '단위 (°C)'
+               },
+               plotLines: [{   //선
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+               }]
+               },
+               
+               legend: {  
+                   layout: 'vertical',
+                   align: 'right',
+                   verticalAlign: 'middle',
+                   borderWidth: 0
+               },
+               series: [{   
+                   name: 'temp',
+                   data: qq1
+               }, {
+                   name: 'hum',
+                   data: ww1
+               },{
+                   name: 'soiltemp',
+                   data: ee1
+               }, {
+                   name: 'soilhum',
+                   data: rr1
+               }]
+       });
+       });
+                                           });
+</script>
+
+
+<script>
+    $.getJSON('http://34.64.175.201:3000/temp1'
+            ,function(data){
+                var $dd2 = data.rowz.length-1
+                 var $date2 = data.rowz[$dd2].date1
+                 
+                 var qq2 = [];
+                 var ww2 = [];
+                 var ee2 = [];
+                 var rr2 = [];
+                 for(var i =0; i<$dd2+1; i++){
+                     qq2.push([
+                         Number(data.rowz[i].temp)
+                     ])
+                 }
+                 for(var i =0; i<$dd2+1; i++){
+                     ww2.push([
+                         Number(data.rowz[i].hum)
+                     ])
+                 }
+                 for(var i =0; i<$dd2+1; i++){
+                     ee2.push([
+                         Number(data.rowz[i].soiltemp)
+                     ])
+                 }
+                 for(var i =0; i<$dd2+1; i++){
+                     rr2.push([
+                         Number(data.rowz[i].soilhum)
+                     ])
+                 }
+                 $(function () {
+          
+          $('#chart3').highcharts({
+              title: {
+                   text: 'Section3',
+                   x: -20 //center
+              },
+              subtitle:{
+                  text: $date2,
+                  x:-20
+
+              },
+          
+              xAxis: {  //x축
+                categories: ['00:00','01:00', '02:00','03:00', '04:00','05:00', '06:00','07:00', '08:00','09:00', '10:00','11:00', '12:00',
+                    '13:00', '14:00','15:00', '16:00','17:00', '18:00','19:00', '20:00','21:00', '22:00','23:00']
+                    },
+              yAxis: {  //y축
+               title: {
+                   text: '단위 (°C)'
+               },
+               plotLines: [{   //선
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+               }]
+               },
+               
+               legend: {  
+                   layout: 'vertical',
+                   align: 'right',
+                   verticalAlign: 'middle',
+                   borderWidth: 0
+               },
+               series: [{   
+                   name: 'temp',
+                   data: qq2
+               }, {
+                   name: 'hum',
+                   data: ww2
+               },{
+                   name: 'soiltemp',
+                   data: ee2
+               }, {
+                   name: 'soilhum',
+                   data: rr2
+               }]
+       });
+       });
+                                           });
+</script>
+
+
+<script>
+    $.getJSON('http://34.64.175.201:3000/temp1'
+            ,function(data){
+                var $dd3 = data.rowz.length-1
+                 var $date3 = data.rowz[$dd3].date1
+                 
+                 var qq3 = [];
+                 var ww3 = [];
+                 var ee3 = [];
+                 var rr3 = [];
+                 for(var i =0; i<$dd3+1; i++){
+                     qq3.push([
+                         Number(data.rowz[i].temp)
+                     ])
+                 }
+                 for(var i =0; i<$dd3+1; i++){
+                     ww3.push([
+                         Number(data.rowz[i].hum)
+                     ])
+                 }
+                 for(var i =0; i<$dd3+1; i++){
+                     ee3.push([
+                         Number(data.rowz[i].soiltemp)
+                     ])
+                 }
+                 for(var i =0; i<$dd3+1; i++){
+                     rr3.push([
+                         Number(data.rowz[i].soilhum)
+                     ])
+                 }
+                 $(function () {
+          
+          $('#chart4').highcharts({
+              title: {
+                   text: 'Section4',
+                   x: -20 //center
+              },
+              subtitle:{
+                  text: $date3,
+                  x:-20
+
+              },
+          
+              xAxis: {  //x축
+                categories: ['00:00','01:00', '02:00','03:00', '04:00','05:00', '06:00','07:00', '08:00','09:00', '10:00','11:00', '12:00',
+                    '13:00', '14:00','15:00', '16:00','17:00', '18:00','19:00', '20:00','21:00', '22:00','23:00']
+                    },
+              yAxis: {  //y축
+               title: {
+                   text: '단위 (°C)'
+               },
+               plotLines: [{   //선
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+               }]
+               },
+               
+               legend: {  
+                   layout: 'vertical',
+                   align: 'right',
+                   verticalAlign: 'middle',
+                   borderWidth: 0
+               },
+               series: [{   
+                   name: 'temp',
+                   data: qq3
+               }, {
+                   name: 'hum',
+                   data: ww3
+               },{
+                   name: 'soiltemp',
+                   data: ee3
+               }, {
+                   name: 'soilhum',
+                   data: rr3
+               }]
+       });
+       });
+                                           });
+</script>
+        <script src="../code/highcharts.js"></script>
+        <script src="../code/modules/exporting.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>  
+        <link href="css/styles.css" rel="stylesheet">     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script> 
+    </style>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="main">Smart Farm</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+
+       
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="main">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        
+                        <div class="sb-sidenav-menu-heading">Addons</div>
+                        <a class="nav-link" href="charts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                           Chart
+                        </a>
+                        <a class="nav-link" href="section1chart">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Section1
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Section2
+                        </a>
+                        <a class="nav-link" href="#" target="_blank">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Section3
+                        </a>
+                        <a class="nav-link" href="#" target="_blank">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Section4
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    
+
+    <br>
+    <div style="text-align: center;">
+    <div id="chart1" style="width: 48%; height: 400; float: left; margin-right: 5px;border-radius: 15px;"></div>
+
+    <div id="chart2" style="width: 48%; height: 400; border-radius: 15px; margin-left: 5px; display: inline-block;"></div>
+</div>
+
+    <br>
+    <div style="text-align: center;">
+    <div id="chart3" style="width: 48%; height: 400; float: left; margin-right: 5px;border-radius: 15px;"></div>
+
+    <div id="chart4" style="width: 48%; height: 400; border-radius: 15px; margin-left: 5px; display: inline-block;"></div>
+    </div>    
+    </div>
+    
+
+    
+    </main>
+    </div>
+    </div>
+    
+  </body>
+ 
+
+</html>

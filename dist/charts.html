@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Charts - SB Admin</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+    <!-- google charts -->
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Layouts
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Pages
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>
+                </nav>
+            </div>
+            <h4>사이트 방문자 성별 현황 그래프</h4>
+ 
+    <div id="Line_Controls_Chart">
+      <!-- 라인 차트 생성할 영역 -->
+          <div id="lineChartArea" style="padding:0px 20px 0px 0px;"></div>
+      <!-- 컨트롤바를 생성할 영역 -->
+          <div id="controlsArea" style="padding:0px 20px 0px 0px;"></div>
+        </div>
+ 
+  </body>
+ 
+  <script>
+ 
+  var chartDrowFun = {
+ 
+    chartDrow : function(){
+        var chartData = '';
+ 
+        //날짜형식 변경하고 싶으시면 이 부분 수정하세요.
+        var chartDateformat     = 'yyyy년MM월dd일';
+        //라인차트의 라인 수
+        var chartLineCount    = 10;
+        //컨트롤러 바 차트의 라인 수
+        var controlLineCount    = 10;
+ 
+ 
+        function drawDashboard() {
+ 
+          var data = new google.visualization.DataTable();
+          //그래프에 표시할 컬럼 추가
+          data.addColumn('datetime' , '날짜');
+          data.addColumn('number'   , '남성');
+          data.addColumn('number'   , '여성');
+          data.addColumn('number'   , '전체');
+ 
+          //그래프에 표시할 데이터
+          var dataRow = [];
+ 
+          for(var i = 0; i <= 29; i++){ //랜덤 데이터 생성
+            var total   = Math.floor(Math.random() * 300) + 1;
+            var man     = Math.floor(Math.random() * total) + 1;
+            var woman   = total - man;
+ 
+            dataRow = [new Date('2017', '09', i , '10'), man, woman , total];
+            data.addRow(dataRow);
+          }
+ 
+ 
+            var chart = new google.visualization.ChartWrapper({
+              chartType   : 'LineChart',
+              containerId : 'lineChartArea', //라인 차트 생성할 영역
+              options     : {
+                              isStacked   : 'percent',
+                              focusTarget : 'category',
+                              height          : 500,
+                              width              : '100%',
+                              legend          : { position: "top", textStyle: {fontSize: 13}},
+                              pointSize        : 5,
+                              tooltip          : {textStyle : {fontSize:12}, showColorCode : true,trigger: 'both'},
+                              hAxis              : {format: chartDateformat, gridlines:{count:chartLineCount,units: {
+                                                                  years : {format: ['yyyy년']},
+                                                                  months: {format: ['MM월']},
+                                                                  days  : {format: ['dd일']},
+                                                                  hours : {format: ['HH시']}}
+                                                                },textStyle: {fontSize:12}},
+                vAxis              : {minValue: 100,viewWindow:{min:0},gridlines:{count:-1},textStyle:{fontSize:12}},
+                animation        : {startup: true,duration: 1000,easing: 'in' },
+                annotations    : {pattern: chartDateformat,
+                                textStyle: {
+                                fontSize: 15,
+                                bold: true,
+                                italic: true,
+                                color: '#871b47',
+                                auraColor: '#d799ae',
+                                opacity: 0.8,
+                                pattern: chartDateformat
+                              }
+                            }
+              }
+            });
+ 
+            var control = new google.visualization.ControlWrapper({
+              controlType: 'ChartRangeFilter',
+              containerId: 'controlsArea',  //control bar를 생성할 영역
+              options: {
+                  ui:{
+                        chartType: 'LineChart',
+                        chartOptions: {
+                        chartArea: {'width': '60%','height' : 80},
+                          hAxis: {'baselineColor': 'none', format: chartDateformat, textStyle: {fontSize:12},
+                            gridlines:{count:controlLineCount,units: {
+                                  years : {format: ['yyyy년']},
+                                  months: {format: ['MM월']},
+                                  days  : {format: ['dd일']},
+                                  hours : {format: ['HH시']}}
+                            }}
+                        }
+                  },
+                    filterColumnIndex: 0
+                }
+            });
+ 
+            var date_formatter = new google.visualization.DateFormat({ pattern: chartDateformat});
+            date_formatter.format(data, 0);
+ 
+            var dashboard = new google.visualization.Dashboard(document.getElementById('Line_Controls_Chart'));
+            window.addEventListener('resize', function() { dashboard.draw(data); }, false); //화면 크기에 따라 그래프 크기 변경
+            dashboard.bind([control], [chart]);
+            dashboard.draw(data);
+ 
+        }
+          google.charts.setOnLoadCallback(drawDashboard);
+ 
+      }
+    }
+ 
+$(document).ready(function(){
+  google.charts.load('current', {'packages':['line','controls']});
+  chartDrowFun.chartDrow(); //chartDrow() 실행
+});
+  </script>
+    </body>
+</html>

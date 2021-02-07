@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Smart Farm</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+        <script type = "text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style type='text/css'>
+
+	#calendar {
+        margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+		
+    </head>
+
+    <style>
+        aa{
+          margin: 0;
+          padding: 0;
+          font-family: 'Open Sans',sans-serif;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f1f1f1;
+        }
+        
+        .skills{
+          width: 100%;
+          max-width: 600px;
+          padding: 0 20px;
+        }
+        
+        .skill-name{
+          font-size: 18px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin: 0px 0;
+        }
+        
+        .skill-bar{
+          height: 20px;
+          background: #cacaca;
+          border-radius: 8px;
+        }
+        
+        .skill-per{
+          height: 20px;
+          background-color: #0fbcf9;
+          border-radius: 8px;
+          width: 0;
+          transition: 1s linear;
+          position: relative;
+        }
+        .temp1{
+          font-size: 18px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin: 0px 0;
+        }
+        .hum1{
+          font-size: 18px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin: 0px 0;
+        }
+        .soiltemp1{
+          font-size: 18px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin: 0px 0;
+        }
+        .soilhum1{
+          font-size: 18px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin: 0px 0;
+        }
+    s:hover{
+		background-color:chocolate;
+	}
+	s:active{
+		background-color: aqua;
+	}
+        </style>
+        <style>
+            .button1 {
+
+width:100px; height: 30px;
+background-color: #4B89DC;
+border: none;
+color:#fff;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 15px;
+cursor: pointer;
+border-radius:10px;
+}
+.button1:hover {
+background-color: #89B2E9;
+opacity: 0.7;
+}
+            .button2 {
+
+width:100px; height: 30px;
+background-color: #f8585b;
+border: none;
+color:#fff;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 15px;
+cursor: pointer;
+border-radius:10px;
+}
+.button2:hover {
+background-color: pink;
+opacity: 0.7;
+}
+
+        </style>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="main">Smart Farm</a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="main">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                           <!--- <a class="nav-link" href="cctv">
+                                <div class="sb-nav-link-icon"><i class="fas fa-camera"></i></div>
+                                CCTV
+							</a>--->
+							<a class="nav-link" href="calendar">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Calendar
+							</a>
+							<a class="nav-link" href="section1" target="_blank">
+                                <div class="sb-nav-link-icon"><i class="fas fa-spinner"></i></div>
+                                Section List
+                            </a>
+							<a class="nav-link" href="charts" target="_blank">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4" style="font-family: 'Jua', sans-serif; text-align: center;">스마트팜 중앙 관제실</h1>
+                        <br>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4" style="border-radius: 25px;">
+                                    <div class="card-body">Section1</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/section1" target="_blank">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4" style="border-radius: 25px;">
+                                    <div class="card-body">Section2</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4" style="border-radius: 25px;">
+                                    <div class="card-body">Section3</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4" style="border-radius: 25px;">
+                                    <div class="card-body">Section4</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+						
+                        <div class="row">
+                            <div class="col-xl-6" style="border-radius: 25px;">
+                                <div class="card mb-4" style="border-radius: 25px;">
+                                    <div class="card-header" style="border-radius: 25px; font-family: 'Bebas Neue', cursive;">
+                                        <i class="fa fa-map-marker"></i>
+                                        Location
+                                    </div>
+									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3156.2758282127443!2d126.88788104966244!3d37.713202979671436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c943e1caccd2b%3A0x56404200ca89df47!2z7KSR67aA64yA7ZWZ6rWQIOqzoOyWkey6oO2NvOyKpCDkuK3pg6jlpKflrbjmoKEgSm9vbmdidSBVbml2ZXJzaXR5!5e0!3m2!1sko!2sus!4v1606636239221!5m2!1sko!2sus" width="100%" height="320" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+									
+
+                                </div>
+                            </div>
+                            <div class="col-xl-6" style="border-radius: 25px;">
+                                
+						
+                                <script>
+                                    $.getJSON('http://34.64.175.201:3000/wind'
+                                    ,function(data){
+                                        var $ws = data.rowa[0].ws;        
+                                        var $wsdate = data.rowa[0].date;
+                                
+                                        $('.ws').append($ws + ' ' + 'm/s');
+                                        $('.wsdate').append($wsdate);               
+                                
+                                            })
+                                    </script>
+                                    <script>
+                                        $.getJSON('http://34.64.175.201:3000/sun'
+                                        ,function(data){
+                                            var $bit = data.rowz[0].bit;        
+                                            var $sundate = data.rowz[0].date;
+                                    
+                                            $('.sun').append($bit + ' ' + 'Lux');
+                                            $('.sundate').append($sundate);               
+                                    
+                                                })
+                                        </script>
+                                        <script>
+                                            $.getJSON('http://34.64.175.201:3000/testtemp'
+                                            ,function(data){
+                                                var $co2 = data.rowd[0].co2;  
+                                                var $co2date = data.rowd[0].date2;      
+                                        
+                                                $('.co2').append($co2 + ' ' + 'ppm');
+                                                $('.co2date').append($co2date);
+                      
+                                        
+                                                    })
+                                            </script>
+                                <div class="card mb-4" style="border-radius: 25px;">
+                                    <div class="card-header" style="border-radius: 25px; font-family: 'Bebas Neue', cursive;">
+                                        <i class="fa fa-newspaper"></i>
+                                        Sensor
+                                    </div>
+                                    <table>
+                                        <thead>
+                                          <tr>
+                                            <th class="text-center">센서</th>
+                                            <th class="text-center">작동상태</th>
+                                            <th class="text-center">센서값</th>
+                                            <th class="text-center">측정 시간</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr class="text-center">
+                                                    <td>풍속 센서</td>
+                                                    <td>작동중</td>
+                                                    <td><div class="ws"></td>
+                                                    <td><div class="wsdate"></div></td>
+                                                </tr>
+                                                <tr class="text-center">
+                                                    <td>조도 센서</td>
+                                                    <td>작동중</td>
+                                                    <td><div class="sun"></td>
+                                                    <td><div class="sundate"></div></td>
+                                                </tr>
+                                                <tr class="text-center">
+                                                    <td>CO2 센서</td>
+                                                    <td>작동중</td>
+                                                    <td><div class="co2"></div></td>
+                                                    <td><div class="co2date"></div></td>
+                                                </tr>
+                                                
+                                                </tbody>
+                                                </table>
+    
+                                    </div>
+
+                 
+                                <div class="card mb-4" style="border-radius: 25px;">
+                                    <div class="card-header" style="border-radius: 25px; font-family: 'Bebas Neue', cursive;">
+                                        <i class="fa fa-cog"></i>
+                                        Control
+                                    </div>
+									<script>
+										$.getJSON('http://34.64.175.201:3000/control'
+												,function(data){
+											var $ws = data.rows[0].ws;        
+											var $sun = data.rows[0].sun;
+											var $rain = data.rows[0].rain;
+											var $wm = data.rows[0].wm;
+											var $led = data.rows[0].led;
+											var $fan = data.rows[0].fan;
+											
+											if($ws == "1")
+												$ws = "작동중";
+											else if($ws == "0")
+												$ws = "정지중";
+
+											if($sun == "1")
+												$sun = "작동중";
+											else if($sun == "0")
+												$sun = "정지중";
+
+											if($rain == "1")
+												$rain = "작동중";
+											else if($rain == "0")
+												$rain = "정지중";	
+
+											if($wm == "1")
+												$wm = "작동중";
+											else if($wm == "0")
+												$wm = "정지중";	
+	
+											if($led == "1")
+												$led = "작동중";
+											else if($led == "0")
+												$led = "정지중";
+
+											if($fan == "1")
+												$fan = "작동중";
+											else if($fan == "0")
+												$fan = "정지중";		
+
+											$('.ws').append($ws);
+											$('.sun').append($sun);
+											$('.rain').append($rain);
+											$('.wm').append($wm);
+											$('.led').append($led);
+											$('.fan').append($fan);	
+											
+										});
+									</script>
+									<table>
+                                        <thead>
+                                          <tr>
+                                            <th class="text-center">센서</th>
+                                            <th class="text-center">작동상태</th>
+											<th class="text-center">ON</th>
+											<th class="text-center">OFF</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr class="text-center" style="height: 40px;">
+                                                    <td>관수모터</td>
+                                                    <td><div class="wm"></div></td>
+                                                    <td onclick="location.href='/wm'"><button class="button1">ON</button></td>
+													<td onclick="location.href='/wm1'"><button class="button2">OFF</button></td>
+                                                </tr>
+                                                <tr class="text-center" style="height: 40px;">
+                                                    <td>LED</td>
+                                                    <td><div class="led"></div></td>
+                                                    <td onclick="location.href='/led'"><button class="button1">ON</button></td>
+													<td onclick="location.href='/led1'"><button class="button2">OFF</button></td>
+												</tr>
+												<tr class="text-center" style="height: 40px;">
+                                                    <td>환풍기</td>
+                                                    <td><div class="fan"></div></td>
+                                                    <td onclick="location.href='/fan'"><button class="button1">ON</button></td>
+													<td onclick="location.href='/fan1'"><button class="button2">OFF</button></td>
+												</tr>
+                                                </tbody>
+                                                </table> 
+                                   
+                                    
+                                </div>
+                                </div>
+                     
+                                    <div class="col-xl-6" style="border-radius: 25px;">
+                                        <div class="card mb-4" style="border-radius: 25px;">
+                                            <div class="card-header" style="border-radius: 25px; font-family: 'Song Myung', serif;font-family: 'Jua', sans-serif;">
+                                                <i class="fa fa-sync" onclick="location.href='main'"></i>
+                                                고양동 실시간 날씨
+                                            </div>
+                                            <script>
+                                                $.getJSON('http://api.openweathermap.org/data/2.5/forecast?q=seoul&APPID=3a4859d5127411d848c31ba3ce2aa1c7&units=metric'
+                                                        ,function(data){
+                                                    var $Temp = data.list[0].main.temp;        
+                                                    var $humidity = data.list[0].main.humidity;
+                                                    var $type = data.list[0].weather[0].main;
+                                                    var $wdspeed = data.list[0].wind.speed;
+                                                    
+                                                    if($type == "Clouds")
+                                                        $type = "구름";
+                                                    else if($type == "Rain")
+                                                        $type = "비";
+                                                    else
+                                                        $type = "맑음";
+                                                    $('.temp').append($Temp + "℃");
+                                                    $('.chumidity').append($humidity + "%");
+                                                    $('.ctype').append($type);
+                                                    $('.cprobability').append($wdspeed + "m/s");	
+                                                });
+                                            </script>
+                                            <div class="temp">&emsp;온도 : </div>
+                                            <div class="chumidity">&emsp;습도 : </div>
+                                            <div class="cprobability">&emsp;풍속 : </div>
+                                            <div class="ctype">&emsp;하늘 상태 : </div>
+                                      
+                                      
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="col-xl-6" style="border-radius: 25px;">
+                            
+                                <div class="card mb-4" style="border-radius: 25px;">
+                                    <div class="card-header" style="border-radius: 25px; font-family: 'Song Myung', serif;font-family: 'Jua', sans-serif;">
+                                        <i class="fa fa-cog"></i>
+                                        개폐기
+                                    </div>
+                                    
+                                    <table>
+                                        <thead>
+                                          <tr>
+											<th class="text-center" onclick="location.href='/up'"><button class="button1">UP</button></th>
+											<th class="text-center" onclick="location.href='/stop'"><button class="button2">STOP</button></th>
+											<th class="text-center" onclick="location.href='/down'"><button class="button1">DOWN</button></th>
+                                          </tr>
+                                        </thead>
+                                        
+                                                </table>
+							</div>
+							
+
+						<div class="card mb-4" style="border-radius: 25px;">
+							<div class="card-header" style="border-radius: 25px; font-family: 'Song Myung', serif;font-family: 'Jua', sans-serif;">
+								<i class="fa fa-cog"></i>
+								자동모드 & 수동모드
+							</div>
+							<table>
+								<thead>
+								  <tr>
+									<th class="text-center" onclick="location.href='/auto1'"><button class="button1">자동모드</button></th>
+									<th class="text-center" onclick="location.href='/auto2'"><button class="button2">수동모드</button></th>
+								  </tr>
+								</thead>	
+								</table>
+							</div>   	
+                        </div>                  
+                        </div> 
+</div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+		<script>
+			window.setTimeout('window.location.reload()',10000);
+			</script>
+    </body>
+</html>

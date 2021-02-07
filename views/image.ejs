@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+          width: 40%;
+          text-align: center;
+          margin:auto;
+        }
+        table, th, td {
+          border: 2px solid #bcbcbc;
+        }
+        .center{
+            text-align: center;
+        }
+      </style>
+      
+</head>
+
+<body>
+  <div style="margin-left: 5%;" >
+            <%
+            for(var i=0; i<results.length; i++)
+            {
+                var data = results[i];
+            %>   
+                <img src="../<%=data.path%>" width="350" height="200" style="margin-top: 20px; margin-left: 20px;" onclick="location.href='../uploads/<%=data.filename%>'"/>
+                
+            <%}%>
+            </div>
+      <br>
+      <br>
+    
+        </body>
+
+
+</html>
